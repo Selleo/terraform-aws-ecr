@@ -6,10 +6,12 @@ locals {
     "context.stage"       = var.context.stage
     "context.name"        = var.context.name
   }
+
+  name = "${var.context.namespace}/${var.context.stage}/${var.context.name}"
 }
 
 resource "aws_ecr_repository" "this" {
-  name                 = "${var.context.namespace}/${var.context.stage}/${var.context.name}"
+  name                 = local.name
   image_tag_mutability = "MUTABLE"
 
   image_scanning_configuration {

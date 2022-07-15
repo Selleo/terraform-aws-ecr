@@ -32,4 +32,9 @@ No modules.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_arn"></a> [arn](#output\_arn) | Repository ARN. |
+| <a name="output_name"></a> [name](#output\_name) | Repository name. |
+| <a name="output_url"></a> [url](#output\_url) | Repository URL |
+| <a name="output_url_tagged_latest"></a> [url\_tagged\_latest](#output\_url\_tagged\_latest) | Repository URL with `latest` tag. |
