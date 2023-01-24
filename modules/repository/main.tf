@@ -8,6 +8,7 @@ locals {
   }
 
   name = "${var.context.namespace}/${var.context.stage}/${var.context.name}"
+  id   = "${var.context.namespace}-${var.context.stage}-${var.context.name}"
 }
 
 resource "aws_ecr_repository" "this" {
@@ -36,3 +37,43 @@ resource "aws_ecr_lifecycle_policy" "this" {
   })
 }
 
+data "aws_iam_policy_document" "deployment_group" {
+  statement {
+    actions = [
+      "ecr:GetAuthorizationToken"
+    ]
+
+    resources = ["*"]
+  }
+
+  statement {
+    actions = [
+      "ecr:BatchGetImage",
+      "ecr:GetDownloadUrlForLayer",
+      "ecr:ListImages",
+    ]
+
+    resources = [aws_ecr_repository.this.arn]
+  }
+
+  statement {
+    actions = [
+      "ecr:BatchCheckLayerAvailability",
+      "ecr:CompleteLayerUpload",
+      "ecr:InitiateLayerUpload",
+      "ecr:PutImage",
+      "ecr:UploadLayerPart",
+    ]
+
+    resources = [aws_ecr_repository.this.arn]
+  }
+}
+
+resource "aws_iam_policy" "deployment_group" {
+  name   = "ecr-${local.id}-deployment"
+  policy = data.aws_iam_policy_document.deployment_group.json
+}
+
+resource "aws_iam_group" "deployment" {
+  name = "ecr-${local.id}-deployment"
+}
