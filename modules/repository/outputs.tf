@@ -17,3 +17,13 @@ output "name" {
   description = "Repository name."
   value       = aws_ecr_repository.this.name
 }
+
+output "deployment_group" {
+  value       = aws_iam_group.deployment.name
+  description = "Deployment group name"
+}
+
+output "deployment_group_arn" {
+  value       = aws_iam_group.deployment.arn
+  description = "Deployment group ARN"
+}

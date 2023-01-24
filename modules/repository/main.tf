@@ -77,3 +77,8 @@ resource "aws_iam_policy" "deployment_group" {
 resource "aws_iam_group" "deployment" {
   name = "ecr-${local.id}-deployment"
 }
+
+resource "aws_iam_group_policy_attachment" "deployment" {
+  group      = aws_iam_group.deployment.name
+  policy_arn = aws_iam_policy.deployment_group.arn
+}

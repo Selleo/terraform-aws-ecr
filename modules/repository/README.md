@@ -22,6 +22,7 @@ No modules.
 | [aws_ecr_lifecycle_policy.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_repository.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository) | resource |
 | [aws_iam_group.deployment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group) | resource |
+| [aws_iam_group_policy_attachment.deployment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group_policy_attachment) | resource |
 | [aws_iam_policy.deployment_group](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_policy_document.deployment_group](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 
@@ -38,6 +39,8 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_arn"></a> [arn](#output\_arn) | Repository ARN. |
+| <a name="output_deployment_group"></a> [deployment\_group](#output\_deployment\_group) | Deployment group name |
+| <a name="output_deployment_group_arn"></a> [deployment\_group\_arn](#output\_deployment\_group\_arn) | Deployment group ARN |
 | <a name="output_name"></a> [name](#output\_name) | Repository name. |
 | <a name="output_url"></a> [url](#output\_url) | Repository URL |
 | <a name="output_url_tagged_latest"></a> [url\_tagged\_latest](#output\_url\_tagged\_latest) | Repository URL with `latest` tag. |
